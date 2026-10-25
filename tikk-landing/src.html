@@ -95,7 +95,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* sections */
 .sec{padding-top:34px}
-#collection{padding-top:6px}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px}
 .h2{font-weight:900;letter-spacing:-.035em;line-height:1;font-size:clamp(23px,6vw,34px);text-wrap:balance}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rust-700);margin-bottom:6px}
@@ -169,21 +168,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .ev .p{font-weight:800;font-size:14px;letter-spacing:-.01em;margin-top:2px}
 .ev .p small{font-weight:500;color:var(--mute);font-size:12px;margin-right:4px}
 
-/* collection banner */
-.collection{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:var(--r-xl);padding:22px 8px 22px 22px;color:#fff;overflow:hidden;text-decoration:none;background:#3b130d;box-shadow:var(--sh-2);isolation:isolate}
-.collection .lines{position:absolute;inset:0;z-index:-1;opacity:.5}
-.collection .copy{display:flex;flex-direction:column;gap:8px;align-items:flex-start;min-width:0;position:relative}
-.collection .k{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ffc9a3}
-.collection h2{font-weight:900;font-size:clamp(30px,8.4vw,46px);line-height:.94;letter-spacing:-.045em}
-.collection p{font-size:13.5px;color:#f3d9cb;max-width:26ch}
-.collection .cta{height:40px;padding:0 16px;font-size:14px;margin-top:6px;background:#fff;color:var(--ink);box-shadow:0 8px 20px rgba(0,0,0,.3)}
-.stack{position:relative;flex:none;width:128px;height:150px;margin-right:12px}
-.stack span{position:absolute;width:84px;height:112px;border-radius:16px;overflow:hidden;box-shadow:0 12px 26px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.85);transition:transform .4s var(--ease)}
-.stack span:nth-child(1){left:0;top:26px;transform:rotate(-9deg)}
-.stack span:nth-child(2){left:22px;top:6px;transform:rotate(1deg);z-index:1}
-.stack span:nth-child(3){left:44px;top:30px;transform:rotate(10deg);z-index:2}
-.collection:hover .stack span:nth-child(1){transform:rotate(-13deg) translateX(-4px)}
-.collection:hover .stack span:nth-child(3){transform:rotate(14deg) translateX(4px)}
 
 /* category sections */
 .cs{padding-top:34px}
@@ -266,7 +250,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* organizers */
 .org{position:relative;border-radius:var(--r-xl);padding:30px 22px 28px;color:#fff;overflow:hidden;isolation:isolate;background:var(--ink);box-shadow:var(--sh-2)}
-.org .lines{position:absolute;right:-60px;top:-60px;width:320px;height:320px;z-index:-1;opacity:.4}
 .org .eyebrow{color:#ffc9a3;display:flex;align-items:center;gap:8px}
 .org h2{font-weight:900;font-size:clamp(32px,9vw,56px);letter-spacing:-.045em;line-height:.95;text-wrap:balance}
 .org p{margin-top:12px;max-width:44ch;color:var(--on-ink);font-size:15.5px}
@@ -414,7 +397,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
 }
 @media (min-width:900px){
   .bnav{display:none}
-  #collection{padding-top:44px}
   .cs{padding-top:56px}
   .cs-panel .rail.cards{padding:6px 0 14px}
   .rail.cards .ev.endcap{display:flex}
@@ -434,11 +416,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   .rail.cards .ev{width:auto}
   .ev h3{font-size:17px}
   .rail.cards .ev:nth-child(n+5){display:none}
-  .collection{padding:32px 40px}
-  .collection .stack{width:220px;height:210px;margin-right:40px}
-  .collection .stack span{width:124px;height:166px}
-  .collection .stack span:nth-child(2){left:48px}.collection .stack span:nth-child(3){left:96px;top:40px}
-  .collection p{max-width:42ch;font-size:15.5px}
   .li{grid-template-columns:104px minmax(0,1fr) auto}.thumb{width:104px;height:104px}
   .cities{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;margin:0;padding:6px 0 0;gap:16px}
   .city{width:auto;height:170px}.city svg{width:120px;height:120px}
@@ -536,8 +513,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     <div class="rail cards" id="trend" tabindex="0" aria-label="Trending events"></div>
   </section>
 
-  <section class="wrap sec" id="collection" aria-label="Collection"></section>
-
   <div id="catSecs"></div>
 
   <section class="wrap sec" id="events" aria-labelledby="lh" aria-live="polite">
@@ -575,7 +550,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
 
   <section class="wrap sec" id="organizers" aria-labelledby="oh">
     <div class="org on-ink">
-      <svg class="lines" viewBox="0 0 320 320" fill="none" stroke="#ffc9a3" stroke-width="1" aria-hidden="true"><g id="mand"></g></svg>
       <div>
         <p class="eyebrow"><svg class="ic sm" aria-hidden="true"><use href="#i-people"/></svg>For organizers</p>
         <h2 id="oh">Sell tickets.<br>Keep your brand.</h2>
@@ -643,7 +617,7 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     <div class="fine">
       <b>Book it right.</b>
       <span>tikk.at is a brand of Ahura Technosoft LLP. © Ahura Technosoft LLP. All rights reserved. Ahmedabad, Gujarat, India.</span>
-      <span>Sample listings. Layout preview only. Navratri events are from the tikk.at comps.</span>
+      <span>Sample listings. Layout preview only.</span>
     </div>
   </div>
 </footer>
@@ -796,8 +770,14 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
         cx=Math.round(200+(s*90-45)),cy=Math.round(190+(s*50-25));
     switch(k){
       case 'festivals':
-        for(i=0;i<24;i++)o+='<ellipse cx="'+cx+'" cy="'+(cy-80)+'" rx="13" ry="42" transform="rotate('+(i*15)+' '+cx+' '+cy+')"/>';
-        for(i=1;i<7;i++)o+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(i*24+16)+'"/>';break;
+        for(var r=0;r<3;r++){
+          var y0=30+r*95,y1=y0+(r%2?90:70),x0=-10,x2=410;
+          o+='<path d="M'+x0+' '+y0+' Q 200 '+y1+' '+x2+' '+y0+'"/>';
+          for(i=1;i<10;i++){var t=i/10,px=Math.round((1-t)*(1-t)*x0+2*(1-t)*t*200+t*t*x2),py=Math.round((1-t)*(1-t)*y0+2*(1-t)*t*y1+t*t*y0);
+            o+='<path d="M'+(px-11)+' '+py+' L'+(px+11)+' '+py+' L'+px+' '+(py+26)+' Z"/>'}
+        }
+        o+='<path d="M'+cx+' '+(cy+60)+' l9 -26 26 -9 -26 -9 -9 -26 -9 26 -26 9 26 9z" transform="translate(0 40) scale(1.4) translate('+Math.round(-cx*.4/1.4)+' 0)"/>';
+        for(i=0;i<16;i++)o+='<circle cx="'+(24+((i*67+Math.round(s*80))%350))+'" cy="'+(300+((i*53)%180))+'" r="'+(2+i%3)+'"/>';break;
       case 'music':
         for(i=0;i<10;i++){var y=70+i*26,a=12+((i*7+Math.round(s*20))%22);o+='<path d="M-10 '+y+' Q 45 '+(y-a)+' 100 '+y+' T 210 '+y+' T 320 '+y+' T 430 '+y+'"/>'}
         for(i=1;i<5;i++)o+='<circle cx="'+cx+'" cy="'+(cy+10)+'" r="'+(i*30)+'"/>';break;
@@ -899,15 +879,7 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     $('trend').innerHTML=t.slice(0,8).map(evCard).join('');
     $('trend').scrollLeft=0;
   }
-  function renderCollection(){
-    var a=inCity(st.city).filter(function(e){return e.art});
-    var sec=$('collection');sec.hidden=!a.length||!!st.q||!!st.cat;
-    renderCatSecs();
-    if(sec.hidden){sec.innerHTML='';return}
-    sec.innerHTML='<a class="collection" href="#" data-soon="Navratri 2026 collection"><svg class="lines" viewBox="0 0 400 200" preserveAspectRatio="xMaxYMid slice" fill="none" stroke="#ffc9a3" stroke-width="1" aria-hidden="true"><g transform="translate(330 100)">'+mandala(190)+'</g></svg>'+
-      '<div class="copy"><span class="k">Collection</span><h2>Navratri<br>2026</h2><p>Garba nights, season passes, VIP tables</p><span class="cta">Explore '+ic('i-arrow','sm')+'</span></div>'+
-      '<div class="stack" aria-hidden="true">'+a.slice(0,3).map(function(e){return '<span>'+artHTML(e,true)+'</span>'}).join('')+'</div></a>';
-  }
+  function renderCollection(){renderCatSecs()}
   function renderCatSecs(){
     var box=$('catSecs');
     if(st.cat||st.q.trim()){box.innerHTML='';return}
@@ -920,12 +892,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
         '<div class="rail cards" tabindex="0" aria-label="'+esc(c.n)+' events">'+g.ev.map(evCard).join('')+
         '<div class="ev endcap"><button type="button" class="more-tile" data-cat="'+c.s+'">'+ic(c.i)+'<b>All '+esc(c.sh.toLowerCase())+'</b><span class="go2">'+ic('i-arrow')+'</span></button></div></div></div></section>';
     }).join('');
-  }
-  function mandala(R){
-    var o='',i;
-    for(i=0;i<24;i++)o+='<ellipse cx="0" cy="'+(-R*.62)+'" rx="'+(R*.075)+'" ry="'+(R*.24)+'" transform="rotate('+(i*15)+')"/>';
-    for(i=1;i<8;i++)o+='<circle r="'+(R*i/7.5)+'"/>';
-    return o;
   }
 
   function liHTML(e,withCity){
@@ -1143,7 +1109,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   function onScroll(){tb.classList.toggle('stuck',window.scrollY>6)}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  $('mand').innerHTML='<g transform="translate(160 160)">'+mandala(150)+'</g>';
   renderAll();
 })();
 </script>
