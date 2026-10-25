@@ -158,6 +158,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .poster .art{transition:transform .6s var(--ease)}
 .ev:hover .poster .art{transform:scale(1.05)}
 .date-tile{position:absolute;left:10px;top:10px;z-index:1;min-width:46px;padding:6px 8px 5px;border-radius:14px;background:rgba(255,255,255,.95);text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.2);line-height:1}
+.date-tile .dw{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
 .date-tile b{display:block;font-weight:900;font-size:19px;letter-spacing:-.04em}
 .date-tile span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rust-700);margin-top:3px}
 .poster .save{position:absolute;right:8px;top:8px;width:34px;height:34px}
@@ -186,6 +187,49 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .more-tile b{font-weight:900;font-size:16px;letter-spacing:-.025em;line-height:1.1;color:var(--ink)}
 .more-tile .go2{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff}
 .more-tile .go2 .ic{width:20px;height:20px}
+
+/* filters */
+.filters{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;margin:4px calc(-1*var(--gr)) 0 calc(-1*var(--gl));padding:4px var(--gr) 10px var(--gl);scroll-padding-left:var(--gl)}
+.filters::-webkit-scrollbar{display:none}
+.fchip{position:relative;flex:none;display:inline-flex;align-items:center;gap:7px;height:42px;padding:0 16px;border-radius:999px;background:#fff;font-weight:600;font-size:14px;white-space:nowrap;box-shadow:var(--sh-1),inset 0 0 0 1px var(--line);transition:transform .2s var(--ease),background .2s,color .2s}
+.fchip .ic{width:17px;height:17px;color:var(--rust)}
+.fchip:hover{transform:translateY(-2px)}
+.fchip[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:var(--sh-1)}
+.fchip[aria-pressed="true"] .ic{color:#ffc9a3}
+.fchip input[type=date]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;font:inherit}
+.fchip:focus-within{outline:2px solid var(--ink);outline-offset:3px}
+.fsep{flex:none;width:1px;height:22px;background:var(--line);margin:0 2px}
+
+/* venue rail */
+.rail.vr{gap:12px;padding-bottom:22px}
+.vc{position:relative;flex:none;width:226px;scroll-snap-align:start;display:flex;flex-direction:column;text-align:left;border-radius:var(--r-lg);background:#fff;overflow:hidden;box-shadow:var(--sh-1),inset 0 0 0 1px var(--line);transition:transform .3s var(--ease),box-shadow .3s}
+.vc:hover{transform:translateY(-4px);box-shadow:var(--sh-2),inset 0 0 0 1px var(--line)}
+.vc-art{position:relative;display:block;height:118px;overflow:hidden}
+.vc-art::after{content:"";position:absolute;inset:auto 0 0;height:50%;background:linear-gradient(to top,rgba(13,13,13,.5),transparent)}
+.vc-art .art{transition:transform .6s var(--ease)}
+.vc:hover .vc-art .art{transform:scale(1.06)}
+.vc-ic{position:absolute;left:10px;top:10px;z-index:1;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.94);color:var(--rust-700);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.vc-ic .ic{width:18px;height:18px}
+.vc-b{display:flex;flex-direction:column;gap:2px;padding:12px 14px 14px}
+.vc-b b{font-weight:800;font-size:16px;letter-spacing:-.02em;line-height:1.15;overflow-wrap:anywhere}
+.vc-b .s{font-size:12.5px;color:var(--mute)}
+.vc-b .n{margin-top:8px;font-size:12.5px;font-weight:700;color:var(--rust-700)}
+
+/* faq */
+.faq-wrap{display:grid;gap:22px}
+.contact-lite{display:inline-flex;align-items:center;gap:10px;margin-top:16px;height:46px;padding:0 18px;border-radius:999px;background:#fff;font-weight:600;font-size:14px;text-decoration:none;box-shadow:var(--sh-1),inset 0 0 0 1px var(--line);transition:transform .2s var(--ease)}
+.contact-lite:hover{transform:translateY(-2px)}
+.contact-lite .ic{color:var(--rust)}
+.faq-list{display:grid;gap:10px}
+.faq{border-radius:var(--r-lg);background:#fff;box-shadow:var(--sh-1),inset 0 0 0 1px var(--line);transition:box-shadow .25s}
+.faq[open]{box-shadow:var(--sh-2),inset 0 0 0 1px var(--line)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:12px 16px 12px 18px;cursor:pointer;list-style:none;font-weight:700;font-size:15.5px;letter-spacing:-.015em;line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{width:20px;height:20px;transition:transform .3s var(--ease);color:var(--rust)}
+.faq[open] summary .ic{transform:rotate(180deg)}
+.faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:-2px;border-radius:var(--r-lg)}
+.faq .a{padding:0 18px 18px;color:var(--mute);font-size:14.5px;max-width:62ch}
+.faq .a a{color:var(--rust-700);font-weight:600}
 
 /* coming up list */
 .chips{display:flex;gap:8px;flex-wrap:wrap}
@@ -240,13 +284,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .seg{display:inline-flex;padding:4px;gap:2px;border-radius:999px;background:var(--wash-2)}
 .seg button{height:40px;padding:0 18px;border-radius:999px;font-weight:600;font-size:14px;transition:background .2s,box-shadow .2s}
 .seg button[aria-selected="true"]{background:#fff;box-shadow:0 2px 8px rgba(40,24,12,.14);font-weight:800}
-.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
-.v{text-decoration:none;position:relative;display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:var(--r-lg);background:#fff;box-shadow:var(--sh-1),inset 0 0 0 1px var(--line);transition:transform .25s var(--ease),box-shadow .25s;min-width:0}
-.v:hover{transform:translateY(-3px);box-shadow:var(--sh-2),inset 0 0 0 1px var(--line)}
-.v .av{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:19px;letter-spacing:-.03em;color:#fff;background:var(--c2)}
-.v b{display:block;font-weight:800;font-size:15px;letter-spacing:-.015em;line-height:1.15;overflow-wrap:anywhere}
-.v .s{font-size:12.5px;color:var(--mute);display:block;margin-top:2px}
-.v .n{margin-top:auto;font-size:12.5px;font-weight:700;color:var(--rust-700)}
 
 /* organizers */
 .org{position:relative;border-radius:var(--r-xl);padding:30px 22px 28px;color:#fff;overflow:hidden;isolation:isolate;background:var(--ink);box-shadow:var(--sh-2)}
@@ -389,7 +426,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   .why li{grid-template-columns:1fr;gap:10px}
   .why .ico{grid-row:auto}
   .why h3,.why p{align-self:auto}
-  .vgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .list{grid-template-columns:1fr 1fr}
   .cols{grid-template-columns:repeat(4,minmax(0,1fr))}
   .trustbar div{flex-direction:row;align-items:center;gap:12px;padding:14px 16px}
@@ -398,6 +434,10 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
 @media (min-width:900px){
   .bnav{display:none}
   .cs{padding-top:56px}
+  .rail.vr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;overflow:visible;margin:0;padding:6px 0 0}
+  .vc{width:auto}
+  .faq-wrap{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+  .filters{overflow:visible;flex-wrap:wrap}
   .cs-panel .rail.cards{padding:6px 0 14px}
   .rail.cards .ev.endcap{display:flex}
   .site-foot .wrap{padding-bottom:36px}
@@ -419,7 +459,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   .li{grid-template-columns:104px minmax(0,1fr) auto}.thumb{width:104px;height:104px}
   .cities{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;margin:0;padding:6px 0 0;gap:16px}
   .city{width:auto;height:170px}.city svg{width:120px;height:120px}
-  .vgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
   .org{padding:48px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
   .org .cta{margin-top:0}
   #cityDlg{width:min(720px,calc(100% - 48px));margin:auto;height:min(760px,86dvh);max-height:86dvh;border-radius:28px;box-shadow:var(--sh-2)}
@@ -493,6 +532,7 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     <section class="wrap hero" aria-labelledby="h1">
       <h1 class="sr" id="h1">tikk.at. Book tickets for events, movies and experiences</h1>
       <div class="cats" id="cats" role="group" aria-label="Browse by type"></div>
+      <div class="filters" id="filters" role="group" aria-label="Filter by date and price"></div>
     </section>
   </div>
 
@@ -506,11 +546,22 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   </section>
 
   <section class="wrap sec" id="trending" aria-labelledby="th">
-    <div class="sec-head">
+    <div class="sec-head" style="flex-wrap:wrap;align-items:center">
       <div><p class="eyebrow">Hot right now</p><h2 class="h2" id="th">Trending in Ahmedabad</h2></div>
-      <button class="link-btn" type="button" id="seeAll">See all <svg class="ic xs" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <div class="seg" role="tablist" aria-label="Hot events">
+        <button role="tab" id="hot-trend" aria-selected="true" type="button" data-hot="trend">Trending</button>
+        <button role="tab" id="hot-fast" aria-selected="false" type="button" data-hot="fast">Selling fast</button>
+      </div>
     </div>
-    <div class="rail cards" id="trend" tabindex="0" aria-label="Trending events"></div>
+    <div class="rail cards" id="trend" role="tabpanel" aria-labelledby="hot-trend" tabindex="0" aria-label="Hot events"></div>
+  </section>
+
+  <section class="wrap sec" id="weekendSec" aria-labelledby="wkh">
+    <div class="sec-head">
+      <div><p class="eyebrow" id="wkEye">Plan your weekend</p><h2 class="h2" id="wkh">This weekend</h2></div>
+      <button class="link-btn" type="button" id="wkAll">See all <svg class="ic xs" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+    <div class="rail cards" id="weekend" tabindex="0" aria-label="This weekend"></div>
   </section>
 
   <div id="catSecs"></div>
@@ -539,13 +590,25 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
 
   <section class="wrap sec" id="venues" aria-labelledby="vh">
     <div class="sec-head" style="flex-wrap:wrap;align-items:center">
-      <div><p class="eyebrow">Where it happens</p><h2 class="h2" id="vh">Venues &amp; organizers</h2></div>
+      <div><p class="eyebrow">Where it happens</p><h2 class="h2" id="vh">Browse by venue</h2></div>
       <div class="seg" role="tablist" aria-label="Show">
         <button role="tab" id="tab-venues" aria-selected="true" type="button" data-t="venues">Venues</button>
         <button role="tab" id="tab-orgs" aria-selected="false" type="button" data-t="orgs">Organizers</button>
       </div>
     </div>
-    <div class="vgrid" id="vo" role="tabpanel" aria-labelledby="tab-venues"></div>
+    <div class="rail vr" id="vo" role="tabpanel" aria-labelledby="tab-venues" tabindex="0"></div>
+  </section>
+
+  <section class="wrap sec" id="faq" aria-labelledby="fqh">
+    <div class="faq-wrap">
+      <div class="faq-intro">
+        <p class="eyebrow">Good to know</p>
+        <h2 class="h2" id="fqh">Questions, answered</h2>
+        <p class="mute" style="margin-top:10px;max-width:38ch">Booking, tickets, refunds and cities. Still stuck? Write to support.</p>
+        <a class="contact-lite" href="mailto:support@tikk.at"><svg class="ic sm" aria-hidden="true"><use href="#i-mail"/></svg>support@tikk.at</a>
+      </div>
+      <div class="faq-list" id="faqList"></div>
+    </div>
   </section>
 
   <section class="wrap sec" id="organizers" aria-labelledby="oh">
@@ -686,7 +749,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     var p=date.split(' · '),d=p[0].split(/[ ,]+/);
     return {slug:slug,name:name,cat:cat,city:city,venue:venue,area:area,time:p[1],dow:d[0],day:+d[1],mon:d[2],price:price,avail:avail,org:org,feat:feat,art:art||''};
   }
-  var MO={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
   var EV=[
     R('mandli-garba-2026','Mandli Garba 2026','festivals-cultural','ahmedabad','Karnavati Club','S.G. Highway','Fri, 26 Sep · 7:30 PM','₹1,799','Few left','Mandli Garba',1,'mandli'),
     R('nagri-na-norta','Nagri Na Norta','festivals-cultural','ahmedabad','Riverfront Grounds','Riverfront','Sat, 27 Sep · 8:00 PM','₹499','Selling fast','Nagri Events',1,'nagri'),
@@ -745,10 +807,20 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   var CITIES=[];CITY_ROWS.forEach(function(r){r.slice(1).forEach(function(n){CITIES.push({id:slug(n),name:n,state:r[0]})})});
   var CITY={};CITIES.forEach(function(c){CITY[c.id]=c});
   var CAT={};CATS.forEach(function(c){CAT[c.s]=c});
-  EV.sort(function(a,b){return (MO[a.mon]-MO[b.mon])||(a.day-b.day)});
+  /* sample dates are generated relative to today so the date filters always have events to show */
+  var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var TODAY=new Date();TODAY.setHours(0,0,0,0);
+  function addDays(n){var d=new Date(TODAY);d.setDate(d.getDate()+n);return d}
+  var dw0=TODAY.getDay(),S1=(dw0===6||dw0===0)?0:6-dw0,S2=dw0===0?0:S1+1;
+  var OFF={'open-mic-finals':0,'premier-cricket-semi':1,'nagri-na-norta':'S1','tatva-ratri':'S1','rooftop-indie-sessions':'S1','mandli-garba-2026':'S2','pottery-weekend':'S2','kabir-a-musical':9,'handloom-craft-fair':12,'acoustic-nights':16,
+    'neon-nights-live':'S1','sunday-standup-club':4,'mumbai-derby-night':20,'midnight-cult-cinema':6,'qawwali-under-stars':'S2','delhi-comedy-tour':5,'winter-art-weekender':25,'indie-garden-fest':'S2','improv-evenings':8,'startup-standup':14,'sufi-evenings':10,'pune-10k-run':'S2','biryani-and-beats':'S1','open-mic-night':3};
+  EV.forEach(function(e,i){var o=OFF[e.slug];o=o==='S1'?S1:o==='S2'?S2:(o==null?10+i:o);var d=addDays(o);e.t=d.getTime();e.dow=DOW[d.getDay()];e.day=d.getDate();e.mon=MONTHS[d.getMonth()];e.pn=+e.price.replace(/[^0-9]/g,'');e.i=i});
+  EV.sort(function(a,b){return (a.t-b.t)||(a.i-b.i)});
+  function dLabel(t){var d=new Date(t);return DOW[d.getDay()]+' '+d.getDate()+' '+MONTHS[d.getMonth()]}
+  var WK1=addDays(S1).getTime(),WK2=addDays(S2).getTime();
   EV.forEach(function(e,i){var h=0;for(var k=0;k<e.slug.length;k++)h=(h*31+e.slug.charCodeAt(k))>>>0;e.seed=(h%1000)/1000;e.tone=e.art?TONE[e.art]:PAL[CAT[e.cat].k].c1});
 
-  var st={city:'ahmedabad',cat:null,q:'',tab:'venues',all:false,saved:[]};
+  var st={city:'ahmedabad',cat:null,q:'',tab:'venues',all:false,saved:[],when:null,date:null,price:null,hot:'trend'};
   try{var sc=localStorage.getItem('tikk.city');if(sc&&CITY[sc])st.city=sc;st.saved=JSON.parse(localStorage.getItem('tikk.saved')||'[]')||[]}catch(e){}
 
   function $(id){return document.getElementById(id)}
@@ -864,25 +936,64 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   }
   function holdSpot(v){spotHold=v;$('dots').classList.toggle('hold',v);if(!v)schedule();else clearTimeout(spotTimer)}
 
-  function evCard(e){
+  function evCard(e,wd){
     var c=CAT[e.cat];
     return '<article class="ev"><div class="poster">'+artHTML(e,true)+
-      '<div class="date-tile tnum"><b>'+e.day+'</b><span>'+esc(e.mon)+'</span></div>'+saveBtn(e)+(e.avail?'<span class="badge">'+esc(e.avail)+'</span>':'')+'</div>'+
+      '<div class="date-tile tnum">'+(wd?'<span class="dw">'+esc(e.dow)+'</span>':'')+'<b>'+e.day+'</b><span>'+esc(e.mon)+'</span></div>'+saveBtn(e)+(e.avail?'<span class="badge">'+esc(e.avail)+'</span>':'')+'</div>'+
       '<div class="ev-b"><h3><a class="stretch" href="#" data-ev="'+e.slug+'">'+esc(e.name)+'</a></h3><p class="m">'+esc(e.venue)+', '+esc(e.area)+'</p><p class="p"><small>From</small>'+esc(e.price)+'</p></div></article>';
   }
-  function filtered(city){return EV.filter(function(e){return (!city||e.city===st.city)&&(!st.cat||e.cat===st.cat)&&matches(e,st.q.trim())})}
-  function renderTrend(){
-    var t=filtered(true).filter(function(e){return e.feat||e.avail});
-    t.sort(function(a,b){return (b.avail==='Selling fast')-(a.avail==='Selling fast')||(b.art?1:0)-(a.art?1:0)});
-    $('trending').hidden=!t.length;
-    $('th').textContent='Trending in '+cname();
-    $('trend').innerHTML=t.slice(0,8).map(evCard).join('');
+  var WHEN_LABEL={today:'Today',tomorrow:'Tomorrow',weekend:'This weekend'},PRICE_LABEL={u500:'Under ₹500',mid:'₹500 – ₹1,000',prem:'₹1,000 and above'};
+  function hasFilter(){return !!(st.cat||st.q.trim()||st.when||st.price)}
+  function passes(e){
+    if(st.cat&&e.cat!==st.cat)return false;
+    if(!matches(e,st.q.trim()))return false;
+    if(st.when){var t0=TODAY.getTime();
+      if(st.when==='today'&&e.t!==t0)return false;
+      if(st.when==='tomorrow'&&e.t!==addDays(1).getTime())return false;
+      if(st.when==='weekend'&&(e.t<WK1||e.t>WK2))return false;
+      if(st.when==='date'&&e.t!==st.date)return false}
+    if(st.price==='u500'&&e.pn>500)return false;
+    if(st.price==='mid'&&(e.pn<=500||e.pn>1000))return false;
+    if(st.price==='prem'&&e.pn<=1000)return false;
+    return true;
+  }
+  function filtered(city){return EV.filter(function(e){return (!city||e.city===st.city)&&passes(e)})}
+  function filterSummary(){
+    var p=[];if(st.cat)p.push(CAT[st.cat].n);
+    if(st.when)p.push(st.when==='date'?dLabel(st.date):WHEN_LABEL[st.when]);
+    if(st.price)p.push(PRICE_LABEL[st.price]);
+    return p.join(' · ');
+  }
+  function renderFilters(){
+    var w=[['today','Today'],['tomorrow','Tomorrow'],['weekend','This weekend']],pr=[['u500','Under ₹500'],['mid','₹500 – ₹1,000'],['prem','₹1,000+']];
+    $('filters').innerHTML=w.map(function(x){return '<button type="button" class="fchip" data-when="'+x[0]+'" aria-pressed="'+(st.when===x[0])+'">'+x[1]+'</button>'}).join('')+
+      '<label class="fchip" id="dateChip" aria-pressed="'+(st.when==='date')+'">'+ic('i-calendar')+'<span>'+(st.when==='date'?dLabel(st.date):'Pick a date')+'</span><input type="date" id="dateIn" aria-label="Pick a date" min="'+isoDate(TODAY)+'"'+(st.when==='date'?' value="'+isoDate(new Date(st.date))+'"':'')+'></label>'+
+      '<span class="fsep" aria-hidden="true"></span>'+
+      pr.map(function(x){return '<button type="button" class="fchip" data-price="'+x[0]+'" aria-pressed="'+(st.price===x[0])+'">'+x[1]+'</button>'}).join('');
+  }
+  function isoDate(d){var m=d.getMonth()+1,dd=d.getDate();return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd}
+  function renderHot(){
+    var sec=$('trending'),city=inCity(st.city),t;
+    if(st.hot==='fast')t=city.filter(function(e){return e.avail}).sort(function(a,b){return (b.avail==='Selling fast')-(a.avail==='Selling fast')||a.t-b.t});
+    else t=city.filter(function(e){return e.feat||e.avail}).sort(function(a,b){return (b.avail==='Selling fast')-(a.avail==='Selling fast')||(b.art?1:0)-(a.art?1:0)});
+    sec.hidden=hasFilter()||!city.length;
+    $('th').textContent=(st.hot==='fast'?'Selling fast in ':'Trending in ')+cname();
+    $('hot-trend').setAttribute('aria-selected',st.hot==='trend');$('hot-fast').setAttribute('aria-selected',st.hot==='fast');
+    $('trend').setAttribute('aria-labelledby',st.hot==='fast'?'hot-fast':'hot-trend');
+    $('trend').innerHTML=t.slice(0,8).map(function(e){return evCard(e,st.hot==='fast')}).join('');
     $('trend').scrollLeft=0;
   }
-  function renderCollection(){renderCatSecs()}
-  function renderCatSecs(){
+  function renderWeekend(){
+    var sec=$('weekendSec'),w=inCity(st.city).filter(function(e){return e.t>=WK1&&e.t<=WK2});
+    sec.hidden=hasFilter()||!w.length;
+    $('wkEye').textContent=(WK1===WK2?dLabel(WK1):dLabel(WK1)+' – '+dLabel(WK2))+' · '+plural(w.length,'event');
+    $('weekend').innerHTML=w.map(function(e){return evCard(e,true)}).join('');
+    $('weekend').scrollLeft=0;
+  }
+  function refreshLists(){renderHot();renderWeekend();renderCatSecs();renderList()}
+    function renderCatSecs(){
     var box=$('catSecs');
-    if(st.cat||st.q.trim()){box.innerHTML='';return}
+    if(hasFilter()){box.innerHTML='';return}
     var here=inCity(st.city),groups=CATS.map(function(c){return {c:c,ev:here.filter(function(e){return e.cat===c.s})}}).filter(function(g){return g.ev.length>=2});
     groups.sort(function(a,b){return b.ev.length-a.ev.length});
     box.innerHTML=groups.slice(0,2).map(function(g){
@@ -904,17 +1015,17 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     return '<div class="pills">'+CITIES.filter(function(c){return inCity(c.id).length}).map(function(c){return '<button type="button" class="pill" data-city="'+c.id+'">'+esc(c.name)+' · '+inCity(c.id).length+'</button>'}).join('')+'</div>';
   }
   function renderList(){
-    var q=st.q.trim(),mine=filtered(true);
-    $('lEye').textContent=(st.cat||q)?'Filtered':'Plan ahead';
-    $('lh').textContent=q?'Results for “'+q+'”':(st.cat?CAT[st.cat].n:'Coming up');
-    $('lMeta').innerHTML=(st.cat||q)?'<button type="button" class="pill" id="clr">Clear '+ic('i-x','xs')+'</button>':'<span class="mute tnum" style="font-size:13px;padding-bottom:4px">'+plural(mine.length,'event')+' · '+esc(cname())+'</span>';
+    var q=st.q.trim(),mine=filtered(true),f=hasFilter(),sum=filterSummary();
+    $('lEye').textContent=f?'Filtered':'Plan ahead';
+    $('lh').textContent=q?'Results for “'+q+'”'+(sum?' · '+sum:''):(sum||'Coming up');
+    $('lMeta').innerHTML=f?'<button type="button" class="pill" id="clr">Clear '+ic('i-x','xs')+'</button>':'<span class="mute tnum" style="font-size:13px;padding-bottom:4px">'+plural(mine.length,'event')+' · '+esc(cname())+'</span>';
     var h='',shown=st.all?mine:mine.slice(0,6);
     if(mine.length){h+='<div class="list">'+shown.map(function(e){return liHTML(e,false)}).join('')+'</div>';
       if(mine.length>6)h+='<div class="more"><button type="button" class="btn-o" id="moreBtn">'+(st.all?'Show fewer':'Show all '+mine.length+' events')+ic('i-chev','xs')+'</button></div>'}
-    var others=(q||st.cat)?EV.filter(function(e){return e.city!==st.city&&(!st.cat||e.cat===st.cat)&&matches(e,q)}):[];
+    var others=f?EV.filter(function(e){return e.city!==st.city&&passes(e)}):[];
     if(!mine.length){
       if(!inCity(st.city).length)h+='<div class="empty"><h3>No events in '+esc(cname())+' yet</h3><p>Events appear as organizers list them. These cities have events now.</p>'+livePills()+'</div>';
-      else h+='<div class="empty"><h3>Nothing for '+(q?'“'+esc(q)+'”':esc(CAT[st.cat].n))+' in '+esc(cname())+' yet</h3><p>'+(others.length?'Found in other cities below.':'Try another spelling or browse a type.')+'</p></div>';
+      else h+='<div class="empty"><h3>Nothing for '+esc(q?'“'+q+'”'+(sum?' · '+sum:''):sum)+' in '+esc(cname())+' yet</h3><p>'+(others.length?'Found in other cities below.':'Try another date, price or type.')+'</p><div class="pills"><button type="button" class="pill" id="clr">Clear filters</button></div></div>';
     }
     if(others.length)h+='<h3 class="sub-h">In other cities</h3><div class="list">'+others.map(function(e){return liHTML(e,true)}).join('')+'</div>';
     $('list').innerHTML=h;
@@ -923,20 +1034,33 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     $('cityTiles').innerHTML=TOP.map(function(id){var n=inCity(id).length;
       return '<button type="button" class="city" data-city="'+id+'" aria-pressed="'+(st.city===id)+'"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="'+LM[id]+'"/></svg><b>'+esc(CITY[id].name)+'</b><span>'+(n?plural(n,'event'):'Coming soon')+'</span></button>'}).join('');
   }
-  var GRAD=[['#b5502e','#e08a4f'],['#4b3f9a','#8f7be0'],['#1f7a70','#58c4b0'],['#a8456b','#e58aae'],['#7f9a52','#b5cf7f'],['#c98a10','#f0c24a']];
   function renderVO(){
-    var evs=inCity(st.city),map={},out=[];
+    var evs=inCity(st.city),map={},out=[],venues=st.tab==='venues';
     if(!evs.length){$('vo').innerHTML='<p class="mute" style="grid-column:1/-1">Venues and organizers appear once events are listed in '+esc(cname())+'.</p>';return}
-    evs.forEach(function(e){var key=st.tab==='venues'?e.venue:e.org;if(!map[key]){map[key]={name:key,n:0,sub:st.tab==='venues'?e.area:CAT[e.cat].sh};out.push(map[key])}map[key].n++});
-    out.sort(function(a,b){return b.n-a.n||a.name.localeCompare(b.name)});
-    $('vo').innerHTML=out.map(function(v,i){var g=GRAD[i%GRAD.length];
-      return '<a class="v" href="#" data-soon="'+esc(v.name)+'"><span class="av" style="--c1:'+g[0]+';--c2:'+g[1]+'">'+esc(v.name.charAt(0))+'</span><span><b>'+esc(v.name)+'</b><span class="s">'+esc(v.sub)+'</span></span><span class="n tnum">'+plural(v.n,'event')+'</span></a>'}).join('');
-    $('tab-venues').setAttribute('aria-selected',st.tab==='venues');
-    $('tab-orgs').setAttribute('aria-selected',st.tab==='orgs');
-    $('vo').setAttribute('aria-labelledby',st.tab==='venues'?'tab-venues':'tab-orgs');
+    evs.forEach(function(e){var key=venues?e.venue:e.org;if(!map[key]){map[key]={name:key,n:0,sub:venues?e.area:CAT[e.cat].sh,e:e,next:e.t};out.push(map[key])}var m=map[key];m.n++;if(e.art&&!m.e.art)m.e=e;if(e.t<m.next)m.next=e.t});
+    out.sort(function(a,b){return b.n-a.n||a.next-b.next});
+    $('vo').innerHTML=out.slice(0,8).map(function(v){
+      return '<button type="button" class="vc" data-sq="'+esc(v.name)+'"><span class="vc-art">'+artHTML(v.e,true)+'<span class="vc-ic">'+ic(venues?'i-pin':'i-people')+'</span></span>'+
+        '<span class="vc-b"><b>'+esc(v.name)+'</b><span class="s">'+esc(v.sub)+'</span><span class="n tnum">'+plural(v.n,'event')+' · next '+esc(dLabel(v.next))+'</span></span></button>'}).join('');
+    $('tab-venues').setAttribute('aria-selected',venues);
+    $('tab-orgs').setAttribute('aria-selected',!venues);
+    $('vo').setAttribute('aria-labelledby',venues?'tab-venues':'tab-orgs');
   }
   function renderSaved(){var n=st.saved.length,b=$('savedN');b.hidden=!n;b.textContent=n}
-  function renderAll(){renderHero();renderCats();renderSpot();renderTrend();renderCollection();renderList();renderCities();renderVO();renderSaved()}
+  function renderAll(){renderHero();renderCats();renderFilters();renderSpot();refreshLists();renderCities();renderVO();renderSaved();renderFaq()}
+  var FAQS=[
+    ['How do I book tickets?','Search or browse, open an event, pick your seats or ticket type and pay once. Your tickets land in My tickets with a QR code.'],
+    ['Where do I find my tickets?','In My tickets. Each ticket shows the date, time, venue and a QR code to scan at the gate.'],
+    ['Are the tickets real?','Listings come from venues, promoters and box offices. Your QR code is issued for your booking.'],
+    ['Can I cancel or get a refund?','Refunds depend on the organizer’s terms for each event. Read the Refund &amp; Cancellation Policy before you pay.'],
+    ['What if an event is cancelled or moved?','The event page and My tickets are updated. Refunds for cancelled events follow the Refund &amp; Cancellation Policy.'],
+    ['What if my payment fails?','Payment didn’t go through. No charge was made. Try again or use another payment method.'],
+    ['How do I change my city?','Tap the city name at the top. You choose your city. tikk.at does not use your location.'],
+    ['I run events. How do I sell tickets here?','Request a demo. You keep your brand on the checkout while we handle payments, delivery and the gate.']
+  ];
+  function renderFaq(){
+    $('faqList').innerHTML=FAQS.map(function(f,i){return '<details class="faq" name="faq"'+(i===0?' open':'')+'><summary>'+f[0]+ic('i-chev')+'</summary><div class="a">'+f[1]+'</div></details>'}).join('');
+  }
   /* search sheet */
   var sdlg=$('searchDlg'),recent=[];
   try{recent=JSON.parse(localStorage.getItem('tikk.recent')||'[]')||[]}catch(e){}
@@ -1004,7 +1128,7 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   sdlg.addEventListener('click',function(e){if(e.target===sdlg)closeSearch()});
   function applyQuery(t){
     st.q=t.trim();st.all=false;if(st.q)pushRecent(st.q);
-    renderTrend();renderCollection();renderList();closeSearch();go('events');
+    refreshLists();renderFilters();closeSearch();go('events');
   }
   $('searchBtn').addEventListener('click',openSearch);
   $('sCancel').addEventListener('click',closeSearch);
@@ -1043,7 +1167,7 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   $('cityBtn').addEventListener('click',openCity);
   $('cityX').addEventListener('click',closeCity);
   $('cq').addEventListener('input',renderCityDlg);
-  function setCity(id){st.city=id;st.cat=null;st.all=false;try{localStorage.setItem('tikk.city',id)}catch(e){}renderAll()}
+  function setCity(id){st.city=id;st.cat=null;st.when=null;st.date=null;st.price=null;st.all=false;try{localStorage.setItem('tikk.city',id)}catch(e){}renderAll()}
 
   var tt;
   function toast(msg){var t=$('toast');t.textContent=msg;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2600)}
@@ -1060,8 +1184,15 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     t=e.target.closest('[data-city]');
     if(t){setCity(t.getAttribute('data-city'));if(dlg.open)closeCity();if(sdlg.open)closeSearch();window.scrollTo({top:0});return}
     t=e.target.closest('[data-cat]');
-    if(t){var c=t.getAttribute('data-cat');if(sdlg.open){st.cat=c;closeSearch()}else st.cat=st.cat===c?null:c;st.all=false;renderCats();renderTrend();renderCollection();renderList();if(st.cat)go('events');return}
-    if(e.target.closest('#clr')){st.cat=null;st.q='';st.all=false;$('q').value='';renderCats();renderTrend();renderCollection();renderList();return}
+    if(t){var c=t.getAttribute('data-cat');if(sdlg.open){st.cat=c;closeSearch()}else st.cat=st.cat===c?null:c;st.all=false;renderCats();refreshLists();if(st.cat)go('events');return}
+    t=e.target.closest('[data-when]');
+    if(t){var wv=t.getAttribute('data-when');st.when=st.when===wv?null:wv;st.date=null;st.all=false;renderFilters();refreshLists();if(st.when)go('events');return}
+    t=e.target.closest('[data-price]');
+    if(t){var pv=t.getAttribute('data-price');st.price=st.price===pv?null:pv;st.all=false;renderFilters();refreshLists();if(st.price)go('events');return}
+    t=e.target.closest('[data-hot]');
+    if(t){st.hot=t.getAttribute('data-hot');renderHot();return}
+    if(e.target.closest('#wkAll')){st.when='weekend';st.all=false;renderFilters();refreshLists();go('events');return}
+    if(e.target.closest('#clr')){st.cat=null;st.q='';st.when=null;st.date=null;st.price=null;st.all=false;$('q').value='';renderCats();renderFilters();refreshLists();return}
     if(e.target.closest('#sAll')){applyQuery($('q').value);return}
     if(e.target.closest('#sClearRecent')){recent=[];try{localStorage.removeItem('tikk.recent')}catch(x){}renderSearch();return}
     t=e.target.closest('[data-sq]');
@@ -1069,7 +1200,6 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
     t=e.target.closest('[data-sev]');
     if(t){var se=EV.filter(function(x){return x.slug===t.getAttribute('data-sev')})[0];if($('q').value.trim())pushRecent($('q').value);closeSearch();toast('Opens '+se.name);return}
     if(e.target.closest('#moreBtn')){st.all=!st.all;renderList();return}
-    if(e.target.closest('#seeAll')){go('events');return}
     t=e.target.closest('[data-dot]');
     if(t){goSlide(+t.getAttribute('data-dot'));return}
     t=e.target.closest('[data-ev]');
@@ -1083,6 +1213,10 @@ dialog::backdrop{background:rgba(13,13,13,.5);-webkit-backdrop-filter:blur(3px);
   $('navSearch').addEventListener('click',openSearch);
   $('navHome').addEventListener('click',function(e){e.preventDefault();navOn('navHome');window.scrollTo({top:0})});
   $('navSaved').addEventListener('click',function(){toast(st.saved.length?plural(st.saved.length,'saved event'):'Nothing saved yet')});
+  document.addEventListener('change',function(e){
+    if(e.target.id==='dateIn'){var v=e.target.value;if(!v)return;var p=v.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);d.setHours(0,0,0,0);st.when='date';st.date=d.getTime();st.all=false;renderFilters();refreshLists();go('events')}
+  });
+  document.addEventListener('click',function(e){var l=e.target.closest('#dateChip');if(l&&e.target.id!=='dateIn'){var i=$('dateIn');try{i.showPicker&&i.showPicker()}catch(x){}}});
   $('prev').addEventListener('click',function(){goSlide(spotIdx-1)});
   $('next').addEventListener('click',function(){goSlide(spotIdx+1)});
 
